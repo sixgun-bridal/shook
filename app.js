@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const pg = require('./db/knex')
 const port = process.env.PORT || 3000
 
-const linkQuery = require('./db/link-query')
+const linkQuery = require('./db/link-queries')
 
 app.set('view engine', 'hbs')
 
