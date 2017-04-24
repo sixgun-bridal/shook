@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "forever": "forever start app.js",
+    "again": "forever restart app.js",
+    "stop": "forever stopall"
   },
   "repository": {
     "type": "git",
