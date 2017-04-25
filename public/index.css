@@ -2,3 +2,12 @@
   color: white;
   background-color: rgb(135,189,189);
 }
+
+iframe#twitter-widget-0.twitter-follow-button.twitter-follow-button-rendered {
+  margin-top: 25%;
+  margin-left: 20%;
+}
+
+#how-it-works-header {
+  margin-left: 1.5%;
+}
