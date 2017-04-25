@@ -9,12 +9,13 @@
     <title>#SHOOK</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script async src="//platform.twitter.com/widgets.js" charset='utf-8'></script>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/landing-page.css">
-    <link rel="stylesheet" href="/index.css">
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/bootstrap.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/signup.css">
 </head>
 
 <body>
@@ -32,24 +33,107 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-              <a href="#about">About</a>
+            <a href="#about">About</a>
           </li>
           <li>
-              <a href="#contact">Contact</a>
+            <a href="#contact">Contact</a>
           </li>
           <li>
-              <a href="#services">Sign up</a>
+            <!-- link to trigger modal -->
+            <a data-toggle="modal" data-target="#signUpModal" class="sign-up">Sign up</a>
           </li>
           <li>
-              <a href="#services">Log in</a>
+            <a data-toggle="modal" data-target="#loginModal" class="login">Log In</a>
           </li>
           <li>
-              <a href='https://twitter.com/shookbot' class='twitter-follow-button' data-show-screen-name='false' data-show-count='false'>Follow @shookbot</a>
+            <a href='https://twitter.com/shookbot' class='twitter-follow-button' data-show-screen-name='false' data-show-count='false'>Follow @shookbot</a>
           </li>
         </ul>
+
       </div>
     </div>
   </nav>
+
+  <!-- BEGIN SIGN UP MODAL -->
+  <div id="signUpModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
+        </div>
+        <div class="modal-body">
+          <form class="modal-form">
+           <div class="form-group">
+             <label for="inputFirstName">First Name</label>
+             <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" placeholder="Enter First name">
+           </div>
+           <div class="form-group">
+             <label for="inputUserLastName">Last Name</label>
+             <input type="text" class="form-control" id="inputUserLastName" aria-describedby="LastHelp" placeholder="Enter Last name">
+           </div>
+           <div class="form-group">
+             <label for="inputUserName">User Name</label>
+             <input type="text" class="form-control" id="inputUserName" aria-describedby="usernameHelp" placeholder="Enter User name">
+           </div>
+           <div class="form-group">
+             <label for="inputEmail1">Email address</label>
+             <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+             <small id="emailHelp" class="form-text text-muted">We’ll never share your email with anyone else.</small>
+           </div>
+           <div class="form-group">
+            <label for="inputPassword1">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+           </div>
+           <div class="form-group">
+            <label for="inputPassword1"> Re-enter Password</label>
+            <input type="password" class="form-control" id="inputRePassword" placeholder="Password">
+           </div>
+          <div class="form-group">
+             <label for="profile-image">Profile Photo</label>
+             <input type="text" class="form-control" id="inputImage" value="https://" name="profile-image">
+          </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END SIGN UP MODAL -->
+
+  <!-- BEGIN LOGIN MODAL -->
+  <div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">LOG IN</h4>
+        </div>
+        <div class="modal-body">
+          <form class="modal-form">
+            <div class="form-group">
+              <label for="inputEmail1">Email address</label>
+              <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+           <div class="form-group">
+            <label for="inputPassword1">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password"><br>
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END LOGIN MODAL -->
 
   <a name="about"></a>
   <div class="intro-header">
@@ -171,14 +255,14 @@
               </li>
               <li class="footer-menu-divider">&sdot;</li>
               <li>
-                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
               </li>
               <li class="footer-menu-divider">&sdot;</li>
               <li>
-                <a href="#contact">Contact</a>
+                <a href="#logout">Log Out</a>
               </li>
             </ul>
-            <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+            <p class="copyright text-muted small">Copyright &copy; SHOOK 2017. All Rights Reserved</p>
           </div>
         </div>
       </div>
@@ -193,7 +277,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="/clickHandlers.js"></script>
+    <!-- <script type="text/javascript" src="/clickHandlers.js"></script> -->
 
 </body>
 
