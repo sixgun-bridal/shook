@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/profile', (req, res) => {
+  res.render('profile')
+})
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 })
