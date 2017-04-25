@@ -22,11 +22,18 @@
   },
   "homepage": "https://github.com/sixgun-bridal/shook#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "flash": "^1.1.0",
     "hbs": "^4.0.1",
     "knex": "^0.12.9",
-    "pg": "^6.1.5"
+    "morgan": "^1.8.1",
+    "path": "^0.12.7",
+    "pg": "^6.1.5",
+    "serve-favicon": "^2.4.2"
   }
 }
