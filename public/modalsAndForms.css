@@ -1,0 +1,49 @@
+a.sign-up, a.login {
+  cursor: pointer;
+}
+
+.modal-header, .modal-footer {
+  padding: 5px;
+}
+
+.modal-header {
+  margin-left: 5px;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+.modal-content {
+  width: 40%;
+}
+
+.modal-content.re-size {
+  width: 80%;
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+}
+
+#opponentName, #user-name-container {
+  width: 45%;
+}
+
+#user-name-container {
+  left: 45%;
+  float: right;
+}
+
+#opponentName {
+    float: left;
+}
+
+#vs {
+  /*float: right;*/
+}
+
+.form-group {
+  clear: both;
+}

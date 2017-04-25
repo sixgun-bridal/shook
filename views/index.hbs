@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/bootstrap.css">
     <link rel="stylesheet" href="/index.css">
-    <link rel="stylesheet" href="/signup.css">
+    <link rel="stylesheet" href="/modalsAndForms.css">
 </head>
 
 <body>
@@ -65,7 +65,7 @@
           <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
         </div>
         <div class="modal-body">
-          <form class="modal-form">
+          <form class="modal-form" action="/signup" method="post">
            <div class="form-group">
              <label for="inputFirstName">First Name</label>
              <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" placeholder="Enter First name">
@@ -101,6 +101,8 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
+
+        </form>
       </div>
     </div>
   </div>
@@ -136,6 +138,76 @@
   </div>
   <!-- END LOGIN MODAL -->
 
+  <!-- BEGIN NEW BET MODAL -->
+    <div class="modal fade" id="newBetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content re-size">
+         <div class="modal-header">
+           <h2 class="modal-title" id="exampleModalLabel">Add New Bet</h2>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+           <form class="modal-form">
+             <div class="form-group">
+               <div class = "versus">
+                 <label class="opponent"  for="opponentName">Opponent Name</label><br>
+                 <select multiple class="form-control" id="opponentName" class="opponent">
+                   <option>Izabela</option>
+                   <option>Justin</option>
+                   <option>Tristan</option>
+                   <option>Tom</option>
+                   <option>Nick</option>
+                   <option>Lee</option>
+                   <option>George</option>
+                   <option>Jackson</option>
+                 </select>
+                     <!-- <span id="vs">VS</span><br> -->
+             <div class="form-group" id="user-name-container">
+               <label for="recipient-name" class="form-control-label">User Name:</label>
+               <input type="text" class="form-control" id="user-name">
+             </div>
+             </div>
+             <div class="form-group">
+               <label for="recipient-name" class="form-control-label">Title:</label>
+               <input type="text" class="form-control" id="title-name">
+             </div>
+             <div class="form-group">
+               <label for="message-text" class="form-control-label">Bet Idea:</label>
+               <textarea class="form-control" id="bet-text"></textarea>
+             </div>
+             <div class="form-group">
+               <label for="message-text" class="form-control-label">Terms and consequences:</label>
+               <textarea class="form-control" id="terms-text"></textarea>
+             </div>
+             <div class="form-group row">
+               <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
+             <div class="col-10">
+               <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+            </div>
+    </div>
+    <div class="form-group row">
+     <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
+    <div class="col-10">
+     <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
+    </div>
+    </div>
+
+
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-primary">Close</button>
+         </div>
+       </form>
+       </div>
+     </div>
+    </div>
+  </div>
+    <!-- END NEW BET MODAL -->
+
+
+
   <a name="about"></a>
   <div class="intro-header">
     <div class="container">
@@ -147,7 +219,7 @@
                 <hr class="intro-divider">
                 <ul class="list-inline intro-social-buttons">
                   <li>
-                    <a href="https://cdn0.iconfinder.com/data/icons/math-business-icon-set/93/1_1-512.png" class="btn btn-default btn-lg"><span class="network-name">New Bet</span></a>
+                    <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#newBetModal" data-whatever="@mdo">New Bet</button>
                   </li>
                   <li>
                     <a href="https://d30y9cdsu7xlg0.cloudfront.net/png/62770-200.png" class="btn btn-default btn-lg"> <span class="network-name">I'm feeling Lucky</span></a>
