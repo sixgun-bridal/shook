@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/profile', (req, res) => {
-  res.render('profile')
+  res.send('profile')
 })
 
 app.listen(port, () => {
