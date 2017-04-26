@@ -11,3 +11,8 @@ iframe#twitter-widget-0.twitter-follow-button.twitter-follow-button-rendered {
 #how-it-works-header {
   margin-left: 1.5%;
 }
+
+.col-lg-offset-2 {
+   margin-left: 16.66666667%;
+   margin-top: 4%;
+}
