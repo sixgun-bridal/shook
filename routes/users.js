@@ -28,8 +28,18 @@ router.get('/', authorizedUser, function(req, res, next){
   });
 });
 
-router.get('/login', function(req, res, next){
-  res.render('login');
+router.get('/login/:id', function(req, res, next){
+  var userId = req.params.id
+  res.redirect('/profile/' + userId);
+});
+
+router.post('/login', function(req, res, next){
+  var email = req.body.email
+  Users().select().where('email', '=', email)
+  .then(function(user) {
+    var userId = user[0].id
+    res.redirect('/profile/' + userId);
+  })
 });
 
 router.get('/signup', function(req, res, next){

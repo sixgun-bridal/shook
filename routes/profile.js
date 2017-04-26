@@ -23,8 +23,12 @@ const Users = function() { return pg('users') };
 //     }
 // });
 
-router.get('/', (req, res, next) => {
-  res.status(200).render('profile');
+router.get('/:id', (req, res, next) => {
+  var id = req.params.id
+  Users().select().where('id', '=', id)
+  .then(function(data) {
+    res.status(200).render('profile', {data});
+  })
 })
 
 
