@@ -1,9 +1,9 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('user_bet', function(table) {
+  return knex.schema.createTable('users_bet', function(table) {
     table.increments();
-    table.integer('user_id');
-    table.foreign('user_id').references('user.id');
+    table.integer('users_id');
+    table.foreign('users_id').references('users.id');
     table.integer('bet_id');
     table.foreign('bet_id').references('bet.id');
     table.boolean('is_winner').notNull().defaultTo(false);
@@ -13,5 +13,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('user_bet');
+  return knex.schema.dropTable('users_bet');
 };
