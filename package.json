@@ -34,6 +34,8 @@
     "morgan": "^1.8.1",
     "path": "^0.12.7",
     "pg": "^6.1.5",
-    "serve-favicon": "^2.4.2"
+    "serve-favicon": "^2.4.2",
+    "twitter": "^1.7.0",
+    "twitter-stream-api": "^0.5.1"
   }
 }

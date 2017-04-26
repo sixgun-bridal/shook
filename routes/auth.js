@@ -7,11 +7,9 @@ const flash = require('flash');
 const Users = function() { return pg('users') };
 
 router.post('/', function(req, res, next) {
-    console.log(req.body);
     Users().where({
         email: req.body.email
     }).first().then(function(user) {
-        console.log(user);
         if (!user) {
             let avatar = req.body.avatar;
             if(!avatar) {
@@ -35,14 +33,7 @@ router.post('/', function(req, res, next) {
               req.flash('info', 'Thanks for signing up.');
             });
         } else {
-            return pg('users').select().where('email', '=', req.body.email)
-            .then(function(existingUser){
-              console.log(existingUser);
-              var userId = existingUser[0].id
-              console.log(userId);
-            res.redirect('/users/login/' + userId);
-            req.flash('error', 'You already have an account with us.');
-          });
+            res.render('index', {error: 'You already have an account with us.'});
         }
     });
 });
