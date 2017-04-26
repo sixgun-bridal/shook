@@ -33,6 +33,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <a id="error" href="#error"><span>{{error}}</span></a>
+          </li>
+          <li>
             <a href="#about">About</a>
           </li>
           <li>
@@ -118,7 +121,7 @@
           <h4 class="modal-title">LOG IN</h4>
         </div>
         <div class="modal-body">
-          <form class="modal-form" action="/users/login" method="post">
+          <form class="modal-form" action="/auth/login" method="post">
             <div class="form-group">
               <label for="email">Email address</label>
               <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
@@ -183,30 +186,28 @@
              </div>
              <div class="form-group row">
                <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
-             <div class="col-10">
-               <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+               <div class="col-10">
+                 <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
             </div>
-    </div>
-    <div class="form-group row">
-     <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
-    <div class="col-10">
-     <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
-    </div>
-    </div>
-
-
+            <div class="form-group row">
+             <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
+              <div class="col-10">
+               <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
+              </div>
+            </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-primary">Close</button>
+           </div>
+          </form>
          </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-primary">Close</button>
-         </div>
-       </form>
        </div>
-     </div>
+      </div>
     </div>
-  </div>
     <!-- END NEW BET MODAL -->
 
-
+  <!-- <a class="twitter-timeline" data-lang="en" data-width="220" data-theme="dark" href="https://twitter.com/shookbot">Tweets by shookbot</a> -->
 
   <a name="about"></a>
   <div class="intro-header">
