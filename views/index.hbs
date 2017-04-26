@@ -63,6 +63,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
+          <p>{{error}}</p>
         </div>
         <div class="modal-body">
           <form class="modal-form" action="/auth" method="post">
@@ -183,21 +184,21 @@
              </div>
              <div class="form-group row">
                <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
-             <div class="col-10">
-               <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+               <div class="col-10">
+                 <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
             </div>
-    </div>
-      <div class="form-group row">
-       <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
-      <div class="col-10">
-       <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
-      </div>
-      </div>
+            <div class="form-group row">
+             <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
+              <div class="col-10">
+               <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
+              </div>
+            </div>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-primary">Close</button>
            </div>
-         </form>
+          </form>
          </div>
        </div>
       </div>
