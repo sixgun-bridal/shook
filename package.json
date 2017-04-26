@@ -2,12 +2,12 @@
   "name": "shook",
   "version": "1.0.0",
   "description": "Quarter II - Group Project",
-  "main": "app.js",
+  "main": "./bin/www",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "forever": "forever start app.js",
-    "again": "forever restart app.js",
+    "start": "node ./bin/www",
+    "forever": "forever start ./bin/www",
+    "again": "forever restart ./bin/www",
     "stop": "forever stopall"
   },
   "repository": {

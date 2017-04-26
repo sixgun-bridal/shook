@@ -1,4 +1,8 @@
 /* USER PROFILE PAGE */
+nav.navbar.navbar-default.navbar-fixed-top.topnav {
+  margin-bottom: 0;
+}
+
 #iframe-pic {
   position: absolute;
   background-size: cover;
