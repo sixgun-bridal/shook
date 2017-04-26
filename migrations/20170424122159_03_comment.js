@@ -2,8 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('comment', function(table) {
     table.increments();
-    table.string('title').notNull();
-    table.string('content');
+    table.string('content').notNull();
     table.integer('user_id');
     table.foreign('user_id').references('user.id');
     table.integer('bet_id');
