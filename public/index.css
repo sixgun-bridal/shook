@@ -16,3 +16,7 @@ iframe#twitter-widget-0.twitter-follow-button.twitter-follow-button-rendered {
    margin-left: 16.66666667%;
    margin-top: 4%;
 }
+
+#error {
+  color: red;
+}

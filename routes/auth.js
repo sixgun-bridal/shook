@@ -30,35 +30,38 @@ router.post('/', function(req, res, next) {
               var userId = newUser[0].id
               console.log(userId);
               res.redirect('/profile/' + userId);
-              req.flash('info', 'Thanks for signing up.');
+              req.flash('profile', 'Thanks for signing up.');
             });
         } else {
-            res.render('index', {error: 'You already have an account with us.'});
+            res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
         }
     });
 });
 
 router.post('/login', function(req, res, next) {
+    console.log(req.body);
     Users().where({
         email: req.body.email,
     }).first().then(function(user) {
+        console.log(user);
+        console.log(bcrypt.compareSync(req.body.password, user.password));
         if ( user && bcrypt.compareSync(req.body.password, user.password) ) {
             res.cookie('userID', user.id, {
                 signed: true
             });
-            req.flash('info', 'Welcome back!');
-            res.redirect('/');
+            var userId = user.id
+            req.flash('profile', 'Welcome back!');
+            res.redirect('/profile/' + userId);
         } else {
-            req.flash('error', 'Invalid email or password.');
-            res.redirect('/users/login');
+            res.render('index', {error: 'Invalid email or password.'});
         }
     });
 });
 
 router.get('/logout', function(req, res) {
     res.clearCookie('userID');
-    req.flash('info', 'Goodbye!');
-    res.redirect('/');
+    req.flash('profile', 'Goodbye!');
+    res.render('index');
 });
 
 module.exports = router;
