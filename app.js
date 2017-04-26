@@ -8,11 +8,12 @@ const bodyParser = require('body-parser');
 const pg = require('./db/knex');
 const session = require('express-session');
 const Users = function() { return pg('users') };
+const twit = require('./db/twtapi');
 
 // routes
 const auth = require('./routes/auth');
 const users = require('./routes/users');
-const profile = require('./routes/profile')
+const profile = require('./routes/profile');
 
 // app
 const app = express();
