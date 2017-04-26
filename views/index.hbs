@@ -65,35 +65,35 @@
           <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
         </div>
         <div class="modal-body">
-          <form class="modal-form" action="/signup" method="post">
+          <form class="modal-form" action="/auth" method="post">
            <div class="form-group">
-             <label for="inputFirstName">First Name</label>
-             <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" placeholder="Enter First name">
+             <label for="first_name">First Name</label>
+             <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" placeholder="Enter First name" name="first_name">
            </div>
            <div class="form-group">
-             <label for="inputUserLastName">Last Name</label>
-             <input type="text" class="form-control" id="inputUserLastName" aria-describedby="LastHelp" placeholder="Enter Last name">
+             <label for="last_name">Last Name</label>
+             <input type="text" class="form-control" id="inputUserLastName" aria-describedby="LastHelp" placeholder="Enter Last name" name="last_name">
            </div>
            <div class="form-group">
-             <label for="inputUserName">User Name</label>
-             <input type="text" class="form-control" id="inputUserName" aria-describedby="usernameHelp" placeholder="Enter User name">
+             <label for="username">User Name</label>
+             <input type="text" class="form-control" id="inputUserName" aria-describedby="usernameHelp" placeholder="Enter User name" name="username">
            </div>
            <div class="form-group">
-             <label for="inputEmail1">Email address</label>
-             <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+             <label for="email">Email address</label>
+             <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
              <small id="emailHelp" class="form-text text-muted">We’ll never share your email with anyone else.</small>
            </div>
            <div class="form-group">
-            <label for="inputPassword1">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
            </div>
            <div class="form-group">
-            <label for="inputPassword1"> Re-enter Password</label>
-            <input type="password" class="form-control" id="inputRePassword" placeholder="Password">
+            <label for="reenter_password"> Re-enter Password</label>
+            <input type="password" class="form-control" id="inputRePassword" placeholder="Password" name="reenter_password">
            </div>
           <div class="form-group">
-             <label for="profile-image">Profile Photo</label>
-             <input type="text" class="form-control" id="inputImage" value="https://" name="profile-image">
+             <label for="avatar">Profile Photo</label>
+             <input type="text" class="form-control" id="inputImage" value="https://" name="avatar">
           </div>
            <button type="submit" class="btn btn-primary">Submit</button>
           </form>

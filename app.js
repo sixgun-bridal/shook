@@ -9,8 +9,6 @@ const pg = require('./db/knex');
 const session = require('express-session');
 const Users = function() { return pg('users') };
 
-const port = process.env.PORT || 3000;
-
 // routes
 const auth = require('./routes/auth');
 const users = require('./routes/users');
@@ -79,9 +77,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-})
 
 module.exports = app;

@@ -4,27 +4,29 @@ const router = express.Router();
 const pg = require('../db/knex');
 const bcrypt = require('bcrypt');
 const flash = require('flash');
-const Users = function() { return pg('users') };
+const Users = function() { return pg('user') };
 
-router.post('/signup', function(req, res, next) {
+router.post('/', function(req, res, next) {
+    console.log(req.body);
     Users().where({
         email: req.body.email
     }).first().then(function(user) {
+        console.log(user);
         if (!user) {
             let hash = bcrypt.hashSync(req.body.password, 10);
-            Users().insert({
+            return pg('user').insert({
                 email: req.body.email,
                 password: hash,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 username: req.body.username,
                 avatar: req.body.avatar
-            })
-            return user
-            .then(function(user){
-              let userId = user.id
+              }).then(function(newUser){
+              console.log(newUser);
+              let userId = newUser.id
+              console.log(userId);
               req.flash('info', 'Thanks for signing up.');
-              res.redirect('/profile', {userId});
+              res.redirect('/profile' + {userId});
             });
         } else {
             req.flash('error', 'You already have an account with us.');
