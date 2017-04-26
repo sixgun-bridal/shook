@@ -4,7 +4,7 @@ const router = express.Router();
 const pg = require('../db/knex');
 const bcrypt = require('bcrypt');
 const flash = require('flash');
-const Users = function() { return pg('user') };
+const Users = function() { return pg('users') };
 
 router.post('/', function(req, res, next) {
     console.log(req.body);
@@ -13,24 +13,36 @@ router.post('/', function(req, res, next) {
     }).first().then(function(user) {
         console.log(user);
         if (!user) {
+            let avatar = req.body.avatar;
+            if(!avatar) {
+              avatar = 'http://www.freeiconspng.com/uploads/grab-vector-graphic-person-icon--imagebasket-13.png'
+            }
             let hash = bcrypt.hashSync(req.body.password, 10);
-            return pg('user').insert({
+            pg('users').insert({
                 email: req.body.email,
                 password: hash,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 username: req.body.username,
-                avatar: req.body.avatar
+                avatar: avatar
+              }).then(function() {
+                return pg('users').select().where('email', '=', req.body.email)
               }).then(function(newUser){
               console.log(newUser);
-              let userId = newUser.id
+              var userId = newUser[0].id
               console.log(userId);
+              res.redirect('/profile/' + userId);
               req.flash('info', 'Thanks for signing up.');
-              res.redirect('/profile' + {userId});
             });
         } else {
+            return pg('users').select().where('email', '=', req.body.email)
+            .then(function(existingUser){
+              console.log(existingUser);
+              var userId = existingUser[0].id
+              console.log(userId);
+            res.redirect('/users/login/' + userId);
             req.flash('error', 'You already have an account with us.');
-            res.redirect('/users/login');
+          });
         }
     });
 });

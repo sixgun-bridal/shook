@@ -118,14 +118,14 @@
           <h4 class="modal-title">LOG IN</h4>
         </div>
         <div class="modal-body">
-          <form class="modal-form">
+          <form class="modal-form" action="/users/login" method="post">
             <div class="form-group">
-              <label for="inputEmail1">Email address</label>
-              <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
             </div>
            <div class="form-group">
-            <label for="inputPassword1">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password"><br>
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password"><br>
            </div>
            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
