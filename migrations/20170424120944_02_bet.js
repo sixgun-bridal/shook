@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('title').notNull();
     table.string('consequences');
     table.string('terms');
-    table.date('bet_start_date').defaultTo('accepted_date');
+    table.date('bet_start_date');
     table.date('bet_end_date');
     table.date('accepted_date');
     table.date('proposed_date');
