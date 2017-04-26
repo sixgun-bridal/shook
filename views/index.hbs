@@ -33,6 +33,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <a id="error" href="#error"><span>{{error}}</span></a>
+          </li>
+          <li>
             <a href="#about">About</a>
           </li>
           <li>
@@ -63,7 +66,6 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
-          <p>{{error}}</p>
         </div>
         <div class="modal-body">
           <form class="modal-form" action="/auth" method="post">
@@ -119,7 +121,7 @@
           <h4 class="modal-title">LOG IN</h4>
         </div>
         <div class="modal-body">
-          <form class="modal-form" action="/users/login" method="post">
+          <form class="modal-form" action="/auth/login" method="post">
             <div class="form-group">
               <label for="email">Email address</label>
               <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
