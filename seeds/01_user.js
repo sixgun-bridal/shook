@@ -19,6 +19,20 @@ exports.seed = function(knex, Promise) {
           password: 'justinpass',
           email: 'justinhart90@gmail.com',
         },
+        {
+        first_name: 'Thomas',
+        last_name: 'Jones',
+        username: 'tjones',
+        password: 'password1',
+        email: 'password1@jones.com',
+      },
+      {
+        first_name: 'Tristan',
+        last_name: 'Gilford',
+        username: 'tgilford',
+        password: 'tpass2',
+        email: 'tristan90@gmail.com',
+      },
       ]);
     });
 };
