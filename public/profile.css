@@ -3,6 +3,42 @@ nav.navbar.navbar-default.navbar-fixed-top.topnav {
   margin-bottom: 0;
 }
 
+div.container.topnav {
+  margin-left: 0;
+  width: 98%;
+}
+
+.nav-button {
+  color: #777;
+  padding: 15px;
+  line-height: 20px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.nav-button:hover {
+  color: black;
+}
+
+.footer-button {
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  line-height: 20px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.footer-button:hover {
+  text-decoration: underline;
+}
+
 #iframe-pic {
   position: absolute;
   top: 0;
