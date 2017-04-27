@@ -18,9 +18,9 @@
 
 <body>
   <div id="iframe-div">
-   <iframe id="iframe-pic"
-           src="https://media.flixel.com/cinemagraph/6jole3yhdk9rhdjmus4z?hd=true">
-   </iframe>
+   <img id="iframe-pic"
+      src="/img/city.gif">
+   </img>
   </div>
   <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
@@ -45,7 +45,9 @@
             <a data-toggle="modal" data-target="#signUpModal" class="sign-up">Sign up</a>
           </li>
           <li>
-            <a data-toggle="modal" data-target="#loginModal" class="login">Log In</a>
+            <form class="" action="/auth/logout" method="get">
+              <button type="submit" name="logout" class="footer-menu-divider">Logout</button>
+            </form>
           </li>
           <li>
             <a href='https://twitter.com/shookbot' class='twitter-follow-button' data-show-screen-name='false' data-show-count='false'>Follow @shookbot</a>
@@ -69,17 +71,17 @@
       <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
           <div class="btn-group" role="group">
               <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                  <div class="hidden-xs">Account Info</div>
-              </button>
-          </div>
-          <div class="btn-group" role="group">
-              <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                   <div class="hidden-xs">Active Bets</div>
               </button>
           </div>
           <div class="btn-group" role="group">
+              <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                  <div class="hidden-xs">Completed Bets</div>
+              </button>
+          </div>
+          <div class="btn-group" role="group">
               <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                  <div class="hidden-xs">Previous Bets</div>
+                  <div class="hidden-xs">Account Info</div>
               </button>
           </div>
       </div>
@@ -87,18 +89,18 @@
           <div class="well">
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tab1">
+
+          </div>
+          <div class="tab-pane fade in" id="tab2">
+            <h3>This is tab 2</h3>
+          </div>
+          <div class="tab-pane fade in" id="tab3">
             <h5>First Name:   {{first_name}}</h5>
             <h5>Last Name:   {{last_name}}</h5>
             <h5>Username:   {{username}}</h5>
             <h5>Email Address:   {{email}}</h5>
             <h5>Bets won:  </h5>
             <h5>Bets lost:  </h5>
-          </div>
-          <div class="tab-pane fade in" id="tab2">
-            <h3>This is tab 2</h3>
-          </div>
-          <div class="tab-pane fade in" id="tab3">
-            <h3>This is tab 3</h3>
           </div>
         </div>
       </div>
@@ -124,7 +126,9 @@
               </li>
               <li class="footer-menu-divider">&sdot;</li>
               <li>
-                <a href="#logout">Log Out</a>
+                <form class="" action="/auth/logout" method="get">
+                  <button type="submit" name="logout" class="footer-menu-divider">Logout</button>
+                </form>
               </li>
             </ul>
             <p class="copyright text-muted small">Copyright &copy; SHOOK 2017. All Rights Reserved</p>

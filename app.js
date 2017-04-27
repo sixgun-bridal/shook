@@ -9,6 +9,7 @@ const pg = require('./db/knex');
 const session = require('express-session');
 const Users = function() { return pg('users') };
 const twit = require('./db/twtapi');
+const linkQuery = require('./db/link-queries')
 
 // routes
 const auth = require('./routes/auth');
