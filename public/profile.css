@@ -72,9 +72,9 @@ div.btn-group {
 
 footer {
     position: absolute;
-    /*margin-top: 10%;*/
-    margin-left: 70%;
-    /*padding: 50px 0;*/
+    margin-left: 75%;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
     background-color: transparent;
     color: white;
     bottom: 0px;

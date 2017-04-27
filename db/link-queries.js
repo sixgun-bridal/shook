@@ -18,10 +18,8 @@ function addBet(bet) {
 }
 
 function getActiveBetsByUserId(id) {
-  return pg('users')
-  .select()
-  .where('id', '=', id)
-  .first()
+  return pg('users').select('*').join('users_bet', 'users.id', 'users_bet.users_id').join('bet', 'users_bet.bet_id', 'bet.id').where('users.id', id);
+
 }
 
 function getCompletedBetsByUserId(id) {

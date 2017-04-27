@@ -158,7 +158,7 @@
              <div class="form-group">
                <div class = "versus">
                  <label class="opponent"  for="opponentName">Opponent Name</label><br>
-                 <select multiple class="form-control" id="opponentName" class="opponent">
+                 <select multiple class="form-control" id="opponentName" class="opponent" name="opponent">
                    <option>Izabela</option>
                    <option>Justin</option>
                    <option>Tristan</option>
@@ -171,26 +171,26 @@
              </div>
              <div class="form-group">
                <label for="recipient-name" class="form-control-label">Title:</label>
-               <input type="text" class="form-control" id="title-name">
+               <input type="text" class="form-control" id="title-name" name="title">
              </div>
              <div class="form-group">
-               <label for="message-text" class="form-control-label">Bet Idea:</label>
-               <textarea class="form-control" id="bet-text"></textarea>
+               <label for="message-text" class="form-control-label">Terms:</label>
+               <textarea class="form-control" id="bet-text" name="terms"></textarea>
              </div>
              <div class="form-group">
-               <label for="message-text" class="form-control-label">Terms and consequences:</label>
-               <textarea class="form-control" id="terms-text"></textarea>
+               <label for="message-text" class="form-control-label">Consequences:</label>
+               <textarea class="form-control" id="terms-text" name="consequences"></textarea>
              </div>
              <div class="form-group">
                <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
                <div class="col-10">
-                 <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                 <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="start_date">
               </div>
             </div>
             <div class="form-group">
-             <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
+             <label for="example-date-input" class="col-2 col-form-label"> End Date</label>
               <div class="col-10">
-               <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
+               <input class="form-control" type="date" value="2011-08-19" id="example-date-output" name="end_date">
               </div>
             </div>
             <div class="col-10">
@@ -205,9 +205,6 @@
        </div>
       </div>
     </div>
-    <!-- END NEW BET MODAL -->
-
-  <!-- <a class="twitter-timeline" data-lang="en" data-width="220" data-theme="dark" href="https://twitter.com/shookbot">Tweets by shookbot</a> -->
 
   <a name="about"></a>
   <div class="intro-header">
