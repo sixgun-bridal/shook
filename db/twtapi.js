@@ -83,14 +83,14 @@ stream.on('data', function(event) {
 // client.get(path, params, callback);
 // client.post(path, params, callback);
 // client.stream(path, params, callback);
-
-// SEARCH for tweets about 'bets'
-client.get('search/tweets', {q: '#shook'}, function(error, tweets, response) {
-   console.log(tweets);
-   .then(function(tweets){
-
-   })
-});
+// 
+// // SEARCH for tweets about 'bets'
+// client.get('search/tweets', {q: '#shook', '@shookbot'}, function(error, tweets, response) {
+//    console.log(tweets);
+//    .then(function(tweets){
+//
+//    })
+// });
 
 // TWEET a new status
 client.post('statuses/update', {status: 'I love holding people accountable for past bets'},  function(error, tweet, response) {
