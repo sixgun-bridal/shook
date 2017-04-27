@@ -31,9 +31,20 @@ function getCompletedBetsByUserId(id) {
   .first()
 }
 
+function editProfile(id, first, last, username, email, password) {
+  return pg('users').where('id', '=', id).update({
+    first_name: first,
+    last_name: last,
+    username: username,
+    email: email,
+    password: password
+  })
+}
+
 module.exports = {
   getUserByEmail,
   getUserById,
   getActiveBetsByUserId,
-  getCompletedBetsByUserId
+  getCompletedBetsByUserId,
+  editProfile
 }
