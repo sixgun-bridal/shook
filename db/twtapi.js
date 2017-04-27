@@ -85,10 +85,10 @@ stream.on('data', function(event) {
 // client.stream(path, params, callback);
 
 // SEARCH for tweets about 'bets'
-client.get('search/tweets', {q: '#shook', '@shookbot'}, function(error, tweets, response) {
+client.get('search/tweets', {q: '#shook'}, function(error, tweets, response) {
    console.log(tweets);
    .then(function(tweets){
-       
+
    })
 });
 
