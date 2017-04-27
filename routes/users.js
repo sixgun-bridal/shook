@@ -5,6 +5,8 @@ const pg = require('../db/knex');
 const bcrypt = require('bcrypt');
 const flash = require('flash');
 const Users = function() { return pg('users') };
+const linkQuery = require('../db/link-queries')
+
 
 // authorizedUser route
 function authorizedUser(req, res, next) {
@@ -33,19 +35,6 @@ router.get('/login/:id', function(req, res, next){
   res.redirect('/profile/' + userId);
 });
 
-router.post('/login', function(req, res, next){
-  var email = req.body.email
-  Users().select().where('email', '=', email)
-  .then(function(user) {
-    var userId = user[0].id
-    res.redirect('/profile/' + userId);
-  })
-});
-
-router.get('/signup', function(req, res, next){
-  res.render('signup');
-});
-
 router.get('/:id', authorizedUser, function(req, res, next){
   Users().where('id', req.params.id).first().then(function(user){
     if (user) {
@@ -54,6 +43,26 @@ router.get('/:id', authorizedUser, function(req, res, next){
       res.status(401).json({ message: 'User does not exist.' });
     }
   });
+});
+
+router.post('/newBet', function(req, res, next) {
+    let userId = req.signedCookies.userID;
+    console.log(userId);
+    console.log(linkQuery.getUserById(userId));
+    linkQuery.getUserById(userId)
+    .then(function(user) {
+        if (user) {
+          linkQuery.addBet(req.body)
+          .then(function(bet) {
+            console.log(bet);
+            // then add bet to profile page
+            res.redirect('/profile/' + userId);
+            req.flash('profile', 'Thanks for adding a new bet.');
+          });
+        } else {
+          res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
+        }
+    });
 });
 
 module.exports = router;

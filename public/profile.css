@@ -5,6 +5,7 @@ nav.navbar.navbar-default.navbar-fixed-top.topnav {
 
 #iframe-pic {
   position: absolute;
+  top: 0;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -26,7 +27,7 @@ div#card-container {
 }
 
 div.well {
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 div.btn-group {

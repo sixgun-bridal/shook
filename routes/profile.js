@@ -5,6 +5,7 @@ const pg = require('../db/knex');
 const bcrypt = require('bcrypt');
 const flash = require('flash');
 const Users = function() { return pg('users') };
+const linkQuery = require('../db/link-queries')
 
 
 // router.get('/', function(req, res, next) {
@@ -30,6 +31,5 @@ router.get('/:id', (req, res, next) => {
     res.status(200).render('profile', {data});
   })
 })
-
 
 module.exports = router;

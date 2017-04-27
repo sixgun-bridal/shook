@@ -131,6 +131,7 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password"><br>
            </div>
+           <input type="hidden" name="id" value="{{id}}">
            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
@@ -153,7 +154,7 @@
            </button>
          </div>
          <div class="modal-body">
-           <form class="modal-form">
+           <form class="modal-form" action="/users/newBet" method="post">
              <div class="form-group">
                <div class = "versus">
                  <label class="opponent"  for="opponentName">Opponent Name</label><br>
@@ -192,9 +193,12 @@
                <input class="form-control" type="date" value="2011-08-19" id="example-date-output">
               </div>
             </div>
-           </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-primary">Close</button>
+            <div class="col-10">
+             <button type="submit" class="btn btn-primary" id="submit-new-bet">Submit</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Close</button>
+            </div>
            </div>
           </form>
          </div>
@@ -340,7 +344,9 @@
               </li>
               <li class="footer-menu-divider">&sdot;</li>
               <li>
-                <a href="#logout">Log Out</a>
+                <form class="" action="/auth/logout" method="get">
+                  <button type="submit" name="logout">Logout</button>
+                </form>
               </li>
             </ul>
             <p class="copyright text-muted small">Copyright &copy; SHOOK 2017. All Rights Reserved</p>
