@@ -31,13 +31,12 @@ function getCompletedBetsByUserId(id) {
   .first()
 }
 
-function editProfile(id, first, last, username, email, password) {
+function editProfile(id, body) {
   return pg('users').where('id', '=', id).update({
-    first_name: first,
-    last_name: last,
-    username: username,
-    email: email,
-    password: password
+    first_name: body.first,
+    last_name: body.last,
+    username: body.username,
+    email: body.email
   })
 }
 
