@@ -17,6 +17,8 @@
 </head>
 
 <body>
+  {{log 'data'}}
+
   <div id="iframe-div">
    <img id="iframe-pic"
       src="/img/city.gif">
@@ -59,8 +61,8 @@
     </div>
   </nav>
 
-  {{#each data}}
-  <div class="row" id="card-container" data-id="{{id}}">
+
+  <div class="row" id="card-container">
     <div class="col-lg-8 col-sm-8">
       <div class="card hovercard">
           <div class="card-background"></div>
@@ -87,23 +89,27 @@
               </button>
           </div>
       </div>
-
           <div class="well">
         <div class="tab-content">
+          {{#each bets}}
           <div class="tab-pane fade in active" id="tab1">
-
+            <h3>Title: {{title}}</h3>
+            <h3>Terms:  {{terms}}</h3>
+            <h3>Consequences:  {{consequences}}</h3>
+            <h3>Start Date:  {{bet_start_date}}</h3>
+            <h3>End Date:  {{bet_end_date}}</h3>
           </div>
+          {{/each}}
           <div class="tab-pane fade in" id="tab2">
             <h3>This is tab 2</h3>
           </div>
           <div class="tab-pane fade in" id="tab3">
-            <h5>First Name:   {{first_name}}</h5>
-            <h5>Last Name:   {{last_name}}</h5>
-            <h5>Username:   {{username}}</h5>
-            <h5>Email Address:   {{email}}</h5>
+            <h5>First Name:   {{user.first_name}}</h5>
+            <h5>Last Name:   {{user.last_name}}</h5>
+            <h5>Username:   {{user.username}}</h5>
+            <h5>Email Address:   {{user.email}}</h5>
             <h5>Bets won:  </h5>
             <h5>Bets lost:  </h5><br>
-            <!-- link to trigger edit profile modal -->
             <h6><a data-toggle="modal" data-target="#signUpModal" class="sign-up">Edit Profile</a></h6>
           </div>
         </div>
@@ -111,10 +117,8 @@
 
     </div>
 
-    <!-- BEGIN SIGN UP MODAL -->
     <div id="signUpModal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -151,10 +155,8 @@
         </div>
       </div>
     </div>
-    <!-- END SIGN UP MODAL -->
 
     </div>
-    {{/each}}
     <footer>
       <div class="container">
         <div class="row">

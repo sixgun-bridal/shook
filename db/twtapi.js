@@ -83,7 +83,7 @@ stream.on('data', function(event) {
 // client.get(path, params, callback);
 // client.post(path, params, callback);
 // client.stream(path, params, callback);
-// 
+//
 // // SEARCH for tweets about 'bets'
 // client.get('search/tweets', {q: '#shook', '@shookbot'}, function(error, tweets, response) {
 //    console.log(tweets);
@@ -93,11 +93,11 @@ stream.on('data', function(event) {
 // });
 
 // TWEET a new status
-client.post('statuses/update', {status: 'I love holding people accountable for past bets'},  function(error, tweet, response) {
-  if(error) throw error;
-  console.log(tweet);  // Tweet body.
-  console.log(response);  // Raw response object.
-});
+// client.post('statuses/update', {status: 'I love holding people accountable for past bets'},  function(error, tweet, response) {
+//   if(error) throw error;
+//   console.log(tweet);  // Tweet body.
+//   console.log(response);  // Raw response object.
+// });
 
 //
 // setInterval(function() {
