@@ -24,6 +24,17 @@ const linkQuery = require('../db/link-queries')
 //     }
 // });
 
+router.post('/tweet', (req, res, next) => {
+  let username = req.body.username
+  return pg('users').select().where('username', '=', username)
+  .then(function(data) {
+      console.log(data);
+      let userId = data.id
+      console.log(userId);
+      res.redirect('/profile/' + userId)
+  })
+})
+
 router.get('/:id', (req, res, next) => {
   var id = req.params.id
   Users().select().where('id', '=', id)
