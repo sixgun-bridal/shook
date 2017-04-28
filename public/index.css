@@ -20,3 +20,19 @@ iframe#twitter-widget-0.twitter-follow-button.twitter-follow-button-rendered {
 #error {
   color: red;
 }
+
+img.same-size {
+  width: 120px;
+  height: 75px;
+  margin-right: 50%;
+}
+
+.img-responsive {
+  height: auto;
+  width: auto;
+}
+
+div.col-lg-5.col-lg-offset-2.col-sm-6 {
+  display: flex;
+  justify-content: center;
+}
