@@ -41,7 +41,7 @@
             <a href="#about">About</a>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <button type="button" class="nav-button btn btn-default btn-lg" data-toggle="modal" data-target="#newBetModal" data-whatever="@mdo">New Bet</button>
           </li>
           <li>
             <form class="" action="/" method="get">
@@ -93,23 +93,23 @@
         <div class="tab-content">
           {{#each bets}}
           <div class="tab-pane fade in active" id="tab1">
-            <h3>Title: {{title}}</h3>
-            <h3>Terms:  {{terms}}</h3>
-            <h3>Consequences:  {{consequences}}</h3>
-            <h3>Start Date:  {{bet_start_date}}</h3>
-            <h3>End Date:  {{bet_end_date}}</h3>
+            <h5>Title:&nbsp;&nbsp;&nbsp; {{title}}</h5>
+            <h5>Terms:&nbsp;&nbsp;&nbsp;  {{terms}}</h5>
+            <h5>Consequences: &nbsp;&nbsp;&nbsp; {{consequences}}</h5>
+            <h5>Start Date:&nbsp;&nbsp;&nbsp;  {{bet_start_date}}</h5>
+            <h5>End Date: &nbsp;&nbsp;&nbsp; {{bet_end_date}}</h5>
           </div>
           {{/each}}
           <div class="tab-pane fade in" id="tab2">
             <h3>This is tab 2</h3>
           </div>
           <div class="tab-pane fade in" id="tab3">
-            <h5>First Name:   {{user.first_name}}</h5>
-            <h5>Last Name:   {{user.last_name}}</h5>
-            <h5>Username:   {{user.username}}</h5>
-            <h5>Email Address:   {{user.email}}</h5>
-            <h5>Bets won:  </h5>
-            <h5>Bets lost:  </h5><br>
+            <h5>First Name:&nbsp;&nbsp;&nbsp;{{user.first_name}}</h5>
+            <h5>Last Name:&nbsp;&nbsp;&nbsp;   {{user.last_name}}</h5>
+            <h5>Username:&nbsp;&nbsp;&nbsp;   {{user.username}}</h5>
+            <h5>Email Address:&nbsp;&nbsp;&nbsp;   {{user.email}}</h5>
+            <h5>Bets won:&nbsp;&nbsp;&nbsp;   </h5>
+            <h5>Bets lost:&nbsp;&nbsp;&nbsp;   </h5><br>
             <h6><a data-toggle="modal" data-target="#signUpModal" class="sign-up">Edit Profile</a></h6>
           </div>
         </div>
@@ -153,6 +153,68 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="newBetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content re-size">
+         <div class="modal-header">
+           <h2 class="modal-title" id="exampleModalLabel">Add New Bet</h2>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+           <form class="modal-form" action="/users/newBet" method="post">
+             <div class="form-group">
+               <div class = "versus">
+                 <label class="opponent"  for="opponentName">Opponent Name</label><br>
+                 <select multiple class="form-control" id="opponentName" class="opponent" name="opponent">
+                   <option>Izabela</option>
+                   <option>Justin</option>
+                   <option>Tristan</option>
+                   <option>Tom</option>
+                   <option>Nick</option>
+                   <option>Lee</option>
+                   <option>George</option>
+                   <option>Jackson</option>
+                 </select>
+             </div>
+             <div class="form-group">
+               <label for="recipient-name" class="form-control-label">Title:</label>
+               <input type="text" class="form-control" id="title-name" name="title">
+             </div>
+             <div class="form-group">
+               <label for="message-text" class="form-control-label">Terms:</label>
+               <textarea class="form-control" id="bet-text" name="terms"></textarea>
+             </div>
+             <div class="form-group">
+               <label for="message-text" class="form-control-label">Consequences:</label>
+               <textarea class="form-control" id="terms-text" name="consequences"></textarea>
+             </div>
+             <div class="form-group">
+               <label for="example-date-input" class="col-2 col-form-label"> Start Date</label>
+               <div class="col-10">
+                 <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="bet_start_date">
+              </div>
+            </div>
+            <div class="form-group">
+             <label for="example-date-input" class="col-2 col-form-label"> End Date</label>
+              <div class="col-10">
+               <input class="form-control" type="date" value="2011-08-19" id="example-date-output" name="bet_end_date">
+              </div>
+            </div>
+            <div class="col-10">
+             <button type="submit" class="btn btn-primary" id="submit-new-bet">Submit</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Close</button>
+            </div>
+           </div>
+          </form>
+         </div>
+       </div>
       </div>
     </div>
 

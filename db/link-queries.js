@@ -12,9 +12,23 @@ function getUserById(id) {
   .where('id', '=', id)
 }
 
-function addBet(bet) {
+function addBet(title, terms, consequences, bet_start_date, bet_end_date) {
   return pg('bet')
-  .insert(bet)
+  .insert({
+    title,
+    terms,
+    consequences,
+    bet_start_date,
+    bet_end_date
+  })
+}
+
+function addUsersBetJoin(user, bet) {
+  return pg('users_bet')
+  .insert({
+    users_id: user.id,
+    bet_id: bet.id
+  })
 }
 
 function getActiveBetsByUserId(id) {
@@ -43,5 +57,7 @@ module.exports = {
   getUserById,
   getActiveBetsByUserId,
   getCompletedBetsByUserId,
-  editProfile
+  editProfile,
+  addBet,
+  addUsersBetJoin
 }
