@@ -12,10 +12,6 @@ router.post('/', function(req, res, next) {
         email: req.body.email
     }).first().then(function(user) {
       if(!user){
-        let avatar = req.body.avatar;
-        if(!avatar) {
-          avatar = 'http://www.freeiconspng.com/uploads/grab-vector-graphic-person-icon--imagebasket-13.png'
-        }
         bcrypt.hash(req.body.password, 10)
         .then(function(hash){
           pg('users').insert({

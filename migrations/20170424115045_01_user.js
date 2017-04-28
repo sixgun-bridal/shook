@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('username').notNull().unique();
     table.string('email').notNull().unique();
     table.string('password').notNull();
-    table.string('avatar').notNull().defaultTo('http://www.freeiconspng.com/uploads/grab-vector-graphic-person-icon--imagebasket-13.png');
+    table.string('avatar').notNull().defaultTo('http://www.clipartkid.com/images/356/blue-and-white-person-icon-png-clipart-image-iconbug-com-g7EhRd-clipart.png');
   })
 }
 

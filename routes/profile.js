@@ -7,23 +7,6 @@ const flash = require('flash');
 const Users = function() { return pg('users') };
 const linkQuery = require('../db/link-queries')
 
-
-// router.get('/', function(req, res, next) {
-//     let user_id = req.signedCookies.userID;
-//
-//     if (user_id) {
-//         Users().select().where({
-//             id: user_id
-//         }).then(function(user) {
-//             res.status(200).render('loggedin', {
-//                 email: user[0].email
-//             });
-//         });
-//     } else {
-//         res.status(200).render('index');
-//     }
-// });
-
 router.post('/tweet', (req, res, next) => {
   let username = req.body.username
   return pg('users').select().where('username', '=', username)
