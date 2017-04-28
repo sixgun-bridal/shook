@@ -32,7 +32,7 @@ router.get('/', authorizedUser, function(req, res, next){
 
 router.get('/login/:id', function(req, res, next){
   var userId = req.params.id
-  res.redirect('/profile/' + userId);
+  res.redirect('/profile/3');
 });
 
 router.get('/:id', authorizedUser, function(req, res, next){

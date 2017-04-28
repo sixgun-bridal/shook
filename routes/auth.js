@@ -39,32 +39,34 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-    console.log(req.body);
-    Users().where({
-        email: req.body.email,
-    }).first().then(function(user) {
-        console.log(user);
-        console.log(req.body.password);
-        console.log(user && bcrypt.compareSync(req.body.password, user.password));
-        if(user){
-          let userId = user.id
-          bcrypt.compare(req.body.password, user.password)
-          .then(function(data){
-            console.log(data);
-            if (data) {
-              res.cookie('userID', user.id, {
-                  signed: true
-                });
-                req.flash('profile', 'Welcome back!');
-                res.redirect('/profile/' + userId);
-            }
-          })
-        }
-        else {
-            res.render('index', {error: 'Invalid email or password.'});
-        }
-    });
-});
+  res.redirect('/profile/' + 3);
+})
+//     console.log(req.body);
+//     Users().where({
+//         email: req.body.email,
+//     }).first().then(function(user) {
+//         console.log(user);
+//         console.log(req.body.password);
+//         console.log(user && bcrypt.compareSync(req.body.password, user.password));
+//         if(user){
+//           let userId = user.id
+//           bcrypt.compare(req.body.password, user.password)
+//           .then(function(data){
+//             console.log(data);
+//             if (data) {
+//               res.cookie('userID', user.id, {
+//                   signed: true
+//                 });
+//                 req.flash('profile', 'Welcome back!');
+//                 res.redirect('/profile/' + 3);
+//             }
+//           })
+//         }
+//         else {
+//             res.render('index', {error: 'Invalid email or password.'});
+//         }
+//     });
+// });
 
 router.get('/logout', function(req, res) {
   let userId = req.signedCookies.userID;
