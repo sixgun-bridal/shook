@@ -48,15 +48,17 @@ router.get('/:id', authorizedUser, function(req, res, next){
 router.post('/newBet', function(req, res, next) {
     let userId = req.signedCookies.userID;
     console.log(userId);
-    console.log(linkQuery.getUserById(userId));
-    linkQuery.getUserById(userId)
+    Users().select().where('id', userId).first()
     .then(function(user) {
         if (user) {
-          linkQuery.addBet(req.body)
+          console.log(user);
+          console.log(req.body);
+          linkQuery.addBet(req.body.title, req.body.terms, req.body.consequences, req.body.bet_start_date, req.body.bet_end_date)
           .then(function(bet) {
             console.log(bet);
+            // linkQuery.addUsersBetJoin(user, bet)
             // then add bet to profile page
-            res.redirect('/profile/' + userId);
+            res.redirect('/profile/3');
             req.flash('profile', 'Thanks for adding a new bet.');
           });
         } else {
