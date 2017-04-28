@@ -20,7 +20,7 @@ router.post('/tweet', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   var id = req.params.id
-  Users().select().where('id', id).first()
+  Users().select().where('id', 3).first()
   .then(function(user) {
     linkQuery.getActiveBetsByUserId(id)
     .then(function(bets){
@@ -33,7 +33,7 @@ router.post('/edit', (req, res, next) => {
   let userId = req.signedCookies.userID;
   linkQuery.editProfile(userId, req.body)
   .then(function(){
-    res.redirect('/profile/' + userId)
+    res.redirect('/profile/3')
   })
 })
 
