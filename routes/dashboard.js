@@ -29,6 +29,28 @@ router.post('/edit', (req, res, next) => {
   })
 })
 
+router.post('/newBet', function(req, res, next) {
+    let userId = req.signedCookies.userID;
+    console.log(userId);
+    Users().select().where('id', userId).first()
+    .then(function(user) {
+        if (user) {
+          console.log(user);
+          console.log(req.body);
+          linkQuery.addBet(req.body.title, req.body.terms, req.body.consequences, req.body.bet_start_date, req.body.bet_end_date)
+          .then(function(bet) {
+            console.log(bet);
+            // linkQuery.addUsersBetJoin(user, bet)
+            // then add bet to dashboard page
+            req.flash('info', 'Thanks for adding a new bet.');
+            res.redirect('/dashboard/' + userId);
+          });
+        } else {
+          res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
+        }
+    });
+});
+
 // router.post('/tweet', (req, res, next) => {
 //   let username = req.body.username
 //   linkQuery.getUserByUsername(username)

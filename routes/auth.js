@@ -14,31 +14,31 @@ router.post('/signup', (req, res) => {
       bcrypt.hash(req.body.password, 10)
       .then((hash) => {
         pg('users').insert({
-                  email: req.body.email,
-                  password: hash,
-                  first_name: req.body.first_name,
-                  last_name: req.body.last_name,
-                  username: req.body.username
-          }).then(() => {
-            Users().where({
-                email: req.body.email
-            }).first().then((user) => {
-              let userId = user.id
-              req.flash('info', 'Thanks for signing up.');
-              res.redirect('/dashboard/' + userId)})
-            })
+          email: req.body.email,
+          password: hash,
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          username: req.body.username
+        }).then(() => {
+          Users().where({
+              email: req.body.email
+          }).first().then((user) => {
+            let userId = user.id
+            req.flash('info', 'Thanks for signing up.');
+            res.redirect('/dashboard/' + userId)})
           })
+        })
     } else {
       res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
     }
   })
   .catch((err) => {
     console.log(err)
-  res.status(500).json({
-    status: 'error',
-    message: 'Something bad happened!'
+    res.status(500).json({
+      status: 'error',
+      message: 'Something bad happened!'
+    })
   })
-})
 });
 
 router.post('/login', (req, res, next) => {
