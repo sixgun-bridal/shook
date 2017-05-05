@@ -8,6 +8,8 @@ exports.up = function(knex, Promise) {
     table.string('email').notNull().unique();
     table.string('password').notNull();
     table.string('avatar').notNull().defaultTo('http://www.clipartkid.com/images/356/blue-and-white-person-icon-png-clipart-image-iconbug-com-g7EhRd-clipart.png');
+    table.integer('bets_won').notNull().defaultTo(0);
+    table.integer('bets_lost').notNull().defaultTo(0);
   })
 }
 

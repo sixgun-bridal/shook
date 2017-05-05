@@ -40,7 +40,7 @@
             <a href="#about">About</a>
           </li>
           <li>
-            <a href="/profile/3">Profile</a>
+            <a href="/dashboard/:id">Dashboard</a>
           </li>
           <li>
             <!-- link to trigger sign up modal -->
@@ -69,7 +69,7 @@
           <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
         </div>
         <div class="modal-body">
-          <form class="modal-form" action="/auth" method="post">
+          <form class="modal-form" action="/auth/signup" method="post">
            <div class="form-group">
              <label for="first_name">First Name</label>
              <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" placeholder="Enter First name" name="first_name">

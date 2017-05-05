@@ -8,13 +8,14 @@ const bodyParser = require('body-parser');
 const pg = require('./db/knex');
 const session = require('express-session');
 const Users = function() { return pg('users') };
+
 const twit = require('./db/twtapi');
 const linkQuery = require('./db/link-queries')
 
 // routes
 const auth = require('./routes/auth');
 const users = require('./routes/users');
-const profile = require('./routes/profile');
+const dashboard = require('./routes/dashboard');
 
 // app
 const app = express();
@@ -43,12 +44,20 @@ app.use(function(req, res, next) {
 
 // main route
 app.get('/', (req, res, next) => {
-  res.status(200).render('index')
-})
+  let userId = req.signedCookies.userID;
+    if (userId) {
+        linkQuery.getUserById(userId)
+        .then(function(user) {
+            res.status(200).render('index');
+        });
+    } else {
+        res.status(200).render('index');
+    }
+});
 
 app.use('/auth', auth);
 app.use('/users', users);
-app.use('/profile', profile);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

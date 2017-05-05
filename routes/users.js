@@ -7,32 +7,28 @@ const flash = require('flash');
 const Users = function() { return pg('users') };
 const linkQuery = require('../db/link-queries')
 
-
-// authorizedUser route
 function authorizedUser(req, res, next) {
-  let user_id = req.signedCookies.userID;
-  if (user_id) {
-      next();
+  let userId = req.signedCookies.userID
+  if (userId) {
+    next()
   } else {
-    req.flash('error', 'You are not authorized.');
-    res.redirect(401, '/');
+    req.flash('error', 'You are not authorized.')
+    res.redirect(401, '/')
   }
 }
 
-router.get('/', authorizedUser, function(req, res, next){
-  Users().then(function(users){
+router.get('/', authorizedUser, (req, res, next) => {
+  Users().then((users) => {
     if (users) {
-      res.json(users);
+      res.json(users)
     } else {
-      res.status(200)
-         .json({ message: 'User does not exist.' });
+      res.status(200).json({ message: 'User does not exist.' })
     }
-  });
-});
+  })
+})
 
-router.get('/login/:id', function(req, res, next){
-  var userId = req.params.id
-  res.redirect('/profile/3');
+router.get('/signup', function(req, res, next){
+  res.render('signup');
 });
 
 router.get('/:id', authorizedUser, function(req, res, next){
@@ -44,6 +40,22 @@ router.get('/:id', authorizedUser, function(req, res, next){
     }
   });
 });
+
+router.get('/login/:id', function(req, res, next){
+  var userId = req.params.id
+  res.redirect('/dashboard/' + userId);
+});
+
+router.get('/:id', authorizedUser, (req, res, next) => {
+  linkQuery.getActiveBetsByUserId(req.params.id)
+  .then((user) => {
+    if (user) {
+      res.json(user)
+    } else {
+      res.status(401).json({ message: 'User does not exist.' })
+    }
+  })
+})
 
 router.post('/newBet', function(req, res, next) {
     let userId = req.signedCookies.userID;
@@ -57,9 +69,9 @@ router.post('/newBet', function(req, res, next) {
           .then(function(bet) {
             console.log(bet);
             // linkQuery.addUsersBetJoin(user, bet)
-            // then add bet to profile page
-            res.redirect('/profile/3');
-            req.flash('profile', 'Thanks for adding a new bet.');
+            // then add bet to dashboard page
+            req.flash('info', 'Thanks for adding a new bet.');
+            res.redirect('/dashboard/' + userId);
           });
         } else {
           res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});

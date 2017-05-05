@@ -12,9 +12,7 @@ exports.seed = function(knex, Promise) {
           bet_start_date: "2017-05-27",
           bet_end_date: "2017-05-27",
           accepted_date:"2017-05-27",
-          proposed_date:"2017-05-27",
-          bets_won:3,
-          bets_lost:4
+          proposed_date:"2017-05-27"
         },
         {
           title: 'Go for a date',
@@ -23,9 +21,7 @@ exports.seed = function(knex, Promise) {
           bet_start_date: '2017-07-27',
           bet_end_date: '2017-09-27',
           accepted_date:'2017-05-27',
-          proposed_date:'2017-05-27',
-          bets_won:3,
-          bets_lost:0
+          proposed_date:'2017-05-27'
         },
         {
           title: 'No Pepsi',
@@ -34,9 +30,7 @@ exports.seed = function(knex, Promise) {
           bet_start_date: '2017-07-11',
           bet_end_date: '2017-09-12',
           accepted_date:'2017-05-12',
-          proposed_date:'2017-05-16',
-          bets_won:7,
-          bets_lost:1
+          proposed_date:'2017-05-16'
         },
         {title: 'Cinammon',
         consequences: " If you lose you need to give 1 hour of a day to charity . If you win you can get one day at a spa.",
@@ -44,9 +38,7 @@ exports.seed = function(knex, Promise) {
         bet_start_date: '2017-05-28',
         bet_end_date: '2017-06-27',
         accepted_date:'2017-05-26',
-        proposed_date:'2017-05-28',
-        bets_won: 8,
-        bets_lost:4
+        proposed_date:'2017-05-28'
       }
 
       ]);

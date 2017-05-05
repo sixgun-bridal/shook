@@ -12,13 +12,11 @@
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/bootstrap.css">
-    <link rel="stylesheet" href="/profile.css">
+    <link rel="stylesheet" href="/dashboard.css">
     <link rel="stylesheet" href="/modalsAndForms.css">
 </head>
 
 <body>
-  {{log 'data'}}
-
   <div id="iframe-div">
    <img id="iframe-pic"
       src="/img/city.gif">
@@ -61,7 +59,6 @@
     </div>
   </nav>
 
-
   <div class="row" id="card-container">
     <div class="col-lg-8 col-sm-8">
       <div class="card hovercard">
@@ -69,10 +66,8 @@
           <div class="useravatar">
               <img alt="" src="https://cdn3.iconfinder.com/data/icons/black-easy/256/535108-user_256x256.png">
           </div>
-          <div class="card-info"> <span class="card-title">Tom Jones</span>
+          <div class="card-info"> <span class="card-title">{{user.first_name}} {{user.last_name}}</span>
           </div>
-          <!-- <div class="card-info"> <span class="card-title">{{first_name}} {{last_name}}</span>
-          </div> -->
       </div>
       <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
           <div class="btn-group" role="group">
@@ -105,28 +100,23 @@
           <div class="tab-pane fade in" id="tab2">
             <h3>This is tab 2</h3>
           </div>
+          {{#each user}}
           <div class="tab-pane fade in" id="tab3">
-            <h5>First Name:&nbsp;&nbsp;&nbsp;Tom</h5>
-            <h5>Last Name:&nbsp;&nbsp;&nbsp;   Jones</h5>
-            <h5>Username:&nbsp;&nbsp;&nbsp;   tjones</h5>
-            <h5>Email Address:&nbsp;&nbsp;&nbsp;   tom@jones.com</h5>
-            <h5>Bets won:&nbsp;&nbsp;&nbsp;   0</h5>
-            <h5>Bets lost:&nbsp;&nbsp;&nbsp;   0</h5><br>
-            <h6><a data-toggle="modal" data-target="#signUpModal" class="sign-up">Edit Profile</a></h6>
-            <!-- <h5>First Name:&nbsp;&nbsp;&nbsp;{{user.first_name}}</h5>
-            <h5>Last Name:&nbsp;&nbsp;&nbsp;   {{user.last_name}}</h5>
-            <h5>Username:&nbsp;&nbsp;&nbsp;   {{user.username}}</h5>
-            <h5>Email Address:&nbsp;&nbsp;&nbsp;   {{user.email}}</h5>
-            <h5>Bets won:&nbsp;&nbsp;&nbsp;   </h5>
-            <h5>Bets lost:&nbsp;&nbsp;&nbsp;   </h5><br>
-            <h6><a data-toggle="modal" data-target="#signUpModal" class="sign-up">Edit Profile</a></h6> -->
+            <h5>First Name:&nbsp;&nbsp;&nbsp;{{first_name}}</h5>
+            <h5>Last Name:&nbsp;&nbsp;&nbsp;{{last_name}}</h5>
+            <h5>Username:&nbsp;&nbsp;&nbsp;{{username}}</h5>
+            <h5>Email Address:&nbsp;&nbsp;&nbsp;{{email}}</h5>
+            <h5>Bets won:&nbsp;&nbsp;&nbsp;{{bets_won}}</h5>
+            <h5>Bets lost:&nbsp;&nbsp;&nbsp;{{bets_lost}}</h5><br>
+            <h6><a data-toggle="modal" data-target="#editProfileModal" class="sign-up">Edit Profile</a></h6>
           </div>
+          {{/each}}
         </div>
       </div>
 
     </div>
-
-    <div id="signUpModal" class="modal fade" role="dialog">
+    {{#each user}}
+    <div id="editProfileModal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -137,23 +127,23 @@
             <form class="modal-form" action="/auth" method="post">
              <div class="form-group">
                <label for="first_name">First Name</label>
-               <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" value="Tom" name="first_name">
+               <input type="text" class="form-control" id="inputFirstName" aria-describedby="firstnameHelp" value="{{first_name}}" name="first_name">
              </div>
              <div class="form-group">
                <label for="last_name">Last Name</label>
-               <input type="text" class="form-control" id="inputUserLastName" aria-describedby="LastHelp" value="Jones" name="last_name">
+               <input type="text" class="form-control" id="inputUserLastName" aria-describedby="LastHelp" value="{{last_name}}" name="last_name">
              </div>
              <div class="form-group">
                <label for="username">User Name</label>
-               <input type="text" class="form-control" id="inputUserName" aria-describedby="usernameHelp" value="tjones" name="username">
+               <input type="text" class="form-control" id="inputUserName" aria-describedby="usernameHelp" value="{{username}}" name="username">
              </div>
              <div class="form-group">
                <label for="email">Email address</label>
-               <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" value="tom@jones.com" name="email">
+               <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" value="{{email}}" name="email">
              </div>
             <div class="form-group">
                <label for="avatar">Profile Photo</label>
-               <input type="text" class="form-control" id="inputImage" value="http://www.clipartkid.com/images/356/blue-and-white-person-icon-png-clipart-image-iconbug-com-g7EhRd-clipart.png" name="avatar">
+               <input type="text" class="form-control" id="inputImage" value="{{avatar}}" name="avatar">
             </div>
              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -164,8 +154,9 @@
         </div>
       </div>
     </div>
+    {{/each}}
 
-    <div class="modal fade" id="newBetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="newBetModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
        <div class="modal-content re-size">
          <div class="modal-header">
@@ -228,6 +219,7 @@
     </div>
 
     </div>
+
     <footer>
       <div class="container">
         <div class="row">
