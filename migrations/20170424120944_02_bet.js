@@ -9,8 +9,7 @@ exports.up = function(knex, Promise) {
     table.date('bet_end_date');
     table.date('accepted_date');
     table.date('proposed_date');
-    table.integer('bets_won').defaultTo(0);
-    table.integer('bets_lost').defaultTo(0);
+    table.string('state').notNull().defaultTo('Pending Acceptance');
   })
 };
 

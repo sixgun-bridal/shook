@@ -4,74 +4,68 @@ const router = express.Router();
 const pg = require('../db/knex');
 const bcrypt = require('bcrypt');
 const flash = require('flash');
-const Users = function() { return pg('users') };
 const linkQuery = require('../db/link-queries')
+const Users = function() { return pg('users') };
 
-router.post('/', function(req, res, next) {
-    Users().where({
-        email: req.body.email
-    }).first().then(function(user) {
-      if(!user){
-        bcrypt.hash(req.body.password, 10)
-        .then(function(hash){
-          pg('users').insert({
+router.post('/signup', (req, res) => {
+  linkQuery.getUserByEmail(req.body.email)
+  .then((user) => {
+    if(!user) {
+      bcrypt.hash(req.body.password, 10)
+      .then((hash) => {
+        pg('users').insert({
                   email: req.body.email,
                   password: hash,
                   first_name: req.body.first_name,
                   last_name: req.body.last_name,
                   username: req.body.username
-          }).then(function(){
+          }).then(() => {
             Users().where({
                 email: req.body.email
-            }).first().then(function(user){
-              console.log(user);
+            }).first().then((user) => {
               let userId = user.id
-              console.log(userId);
-              res.redirect('/profile/' + userId);
-              req.flash('profile', 'Thanks for signing up.');
+              req.flash('info', 'Thanks for signing up.');
+              res.redirect('/dashboard/' + userId)})
             })
           })
-        })
-      } else {
-            res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
-        }
-    });
+    } else {
+      res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+  res.status(500).json({
+    status: 'error',
+    message: 'Something bad happened!'
+  })
+})
 });
 
-router.post('/login', function(req, res, next) {
-  res.redirect('/profile/' + 3);
-})
-//     console.log(req.body);
-//     Users().where({
-//         email: req.body.email,
-//     }).first().then(function(user) {
-//         console.log(user);
-//         console.log(req.body.password);
-//         console.log(user && bcrypt.compareSync(req.body.password, user.password));
-//         if(user){
-//           let userId = user.id
-//           bcrypt.compare(req.body.password, user.password)
-//           .then(function(data){
-//             console.log(data);
-//             if (data) {
-//               res.cookie('userID', user.id, {
-//                   signed: true
-//                 });
-//                 req.flash('profile', 'Welcome back!');
-//                 res.redirect('/profile/' + 3);
-//             }
-//           })
-//         }
-//         else {
-//             res.render('index', {error: 'Invalid email or password.'});
-//         }
-//     });
-// });
+router.post('/login', (req, res, next) => {
+  linkQuery.getUserByEmail(req.body.email)
+  .then((user) => {
+    if(user){
+      let userId = user.id
+      bcrypt.compare(req.body.password, user.password)
+      .then((data) => {
+        if (data) {
+          res.cookie('userID', user.id, {
+              signed: true
+            });
+          req.flash('info', 'Welcome back!');
+          res.redirect('/dashboard/' + userId);
+        }
+      })
+    }
+    else {
+      res.render('index', {error: 'Invalid email or password.'});
+    }
+  });
+});
 
-router.get('/logout', function(req, res) {
-  let userId = req.signedCookies.userID;
-  res.clearCookie(userId);
-  req.flash('index', 'Goodbye!');
+router.get('/logout', (req, res) => {
+  res.clearCookie('userID');
+  req.flash('info', 'Goodbye!');
   res.redirect('/');
 });
 
