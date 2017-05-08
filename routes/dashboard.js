@@ -5,6 +5,7 @@ const pg = require('../db/knex');
 const bcrypt = require('bcrypt');
 const flash = require('flash');
 const linkQuery = require('../db/link-queries')
+const Users = function() { return pg('users') };
 
 // get user dashboard after signing up or logging in
 router.get('/:id', (req, res, next) => {
@@ -31,23 +32,22 @@ router.post('/edit', (req, res, next) => {
 
 router.post('/newBet', function(req, res, next) {
     let userId = req.signedCookies.userID;
-    console.log(userId);
+    let newBet = req.body;
     Users().select().where('id', userId).first()
-    .then(function(user) {
+    .then((user) => {
         if (user) {
-          console.log(user);
-          console.log(req.body);
-          linkQuery.addBet(req.body.title, req.body.terms, req.body.consequences, req.body.bet_start_date, req.body.bet_end_date)
-          .then(function(bet) {
-            console.log(bet);
-            // linkQuery.addUsersBetJoin(user, bet)
-            // then add bet to dashboard page
-            req.flash('info', 'Thanks for adding a new bet.');
-            res.redirect('/dashboard/' + userId);
-          });
+          linkQuery.addBet(newBet)
+          .then((betId) => linkQuery.addBetToJoinTable(betId[0], userId)) .then((id) => res.redirect('/dashboard/' + userId))
         } else {
-          res.render('index', {error: "You already have an account with us. Please use the 'Log In' link."});
+          res.render('index', {error: "Please login or sign up to create a new bet"});
         }
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({
+        status: 'error',
+        message: 'Something bad happened!'
+      })
     });
 });
 

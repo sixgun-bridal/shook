@@ -32,22 +32,27 @@ function getUserByUsername(username) {
     .first()
 }
 
-function addBet(title, terms, consequences, bet_start_date, bet_end_date) {
+function addBet(body) {
   return pg('bet')
+    .returning('id')
     .insert({
-      title,
-      terms,
-      consequences,
-      bet_start_date,
-      bet_end_date
-    })
+      title: body.title,
+      terms: body.terms,
+      consequences: body.consequences,
+      bet_start_date: body.bet_start_date,
+      bet_end_date: body.bet_end_date
+  })
 }
 
-function addUsersBetJoin(user, bet) {
+function addBetToJoinTable(betId, userId) {
   return pg('users_bet')
+    .returning('id')
     .insert({
-      users_id: user.id,
-      bet_id: bet.id
+      users_id: userId,
+      bet_id: betId,
+      is_winner: false,
+      is_proposer: false,
+      is_acceptor: false
     })
 }
 
@@ -83,5 +88,5 @@ module.exports = {
   getCompletedBetsByUserId,
   editProfile,
   addBet,
-  addUsersBetJoin
+  addBetToJoinTable
 }
