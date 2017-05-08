@@ -2,6 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('bet', function(table) {
     table.increments();
+    table.string('opponent');
     table.string('title').notNull();
     table.string('consequences');
     table.string('terms');

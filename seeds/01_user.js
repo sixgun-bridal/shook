@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
           first_name: 'Izabela',
           last_name: 'Louw',
           username: 'braga',
-          password: 'password',
+          password: '$2a$10$hm0vyNQXkIExx1Ca4UPAvuXrrBoAEeAzfXKI1uOnfwrYhfLyIsLF2',
           email: 'password@braga.com',
           bets_won:3,
           bets_lost:4
@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
           first_name: 'Justin',
           last_name: 'Hart',
           username: 'jhart',
-          password: 'justinpass',
+          password: '$2a$10$hm0vyNQXkIExx1Ca4UPAvuXrrBoAEeAzfXKI1uOnfwrYhfLyIsLF2',
           email: 'justinhart90@gmail.com',
           bets_won:3,
           bets_lost:4
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
         first_name: 'Thomas',
         last_name: 'Jones',
         username: 'tjones',
-        password: 'password1',
+        password: '$2a$10$hm0vyNQXkIExx1Ca4UPAvuXrrBoAEeAzfXKI1uOnfwrYhfLyIsLF2',
         email: 'password1@jones.com',
         bets_won:3,
         bets_lost:4
@@ -36,7 +36,7 @@ exports.seed = function(knex, Promise) {
         first_name: 'Tristan',
         last_name: 'Gilford',
         username: 'tgilford',
-        password: 'tpass2',
+        password: '$2a$10$hm0vyNQXkIExx1Ca4UPAvuXrrBoAEeAzfXKI1uOnfwrYhfLyIsLF2',
         email: 'tristan90@gmail.com',
         bets_won:3,
         bets_lost:4

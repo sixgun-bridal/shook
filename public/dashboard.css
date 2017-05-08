@@ -93,6 +93,7 @@ p.copyright {
 
 span.card-title {
   margin-top: 100px;
+  background-color: black !important;
 }
 
 div.btn-pref.btn-group.btn-group-justified.btn-group-lg {
