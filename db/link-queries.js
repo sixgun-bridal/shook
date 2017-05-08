@@ -36,6 +36,7 @@ function addBet(body) {
   return pg('bet')
     .returning('id')
     .insert({
+      opponent: body.opponent,
       title: body.title,
       terms: body.terms,
       consequences: body.consequences,
