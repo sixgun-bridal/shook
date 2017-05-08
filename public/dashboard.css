@@ -35,12 +35,17 @@ div.container.topnav {
   border: none;
 }
 
+.fixed-footer {
+  position: absolute;
+  bottom: 0;
+}
+
 .footer-button:hover {
   text-decoration: underline;
 }
 
 #iframe-pic {
-  position: absolute;
+  position: fixed;
   top: 0;
   background-size: cover;
   background-repeat: no-repeat;
